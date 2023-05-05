@@ -1,0 +1,16 @@
+{% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+{% endif %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Subscribed {{error}} </title>
+</head>
+<body>
+	<h1>Subscription updated</h1>
+    <ul>
+        <li><a href = "{{url_for('subscribed_info') }}"> Subscription Page</a></li>
+    </ul>
+</body>
+</html>

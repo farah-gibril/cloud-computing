@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Subscribed songs</title>
+  </head>
+  <body>
+    <h1>Subscribed songs for {{username}}</h1>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Year</th>
+        <th>Image URL</th>
+        {% for item in results %}
+        <tr>
+          <td>{{ item.song_title }}</td>
+          <td>{{ item.song_artist }}</td>
+          <td>{{ item.song_year }}</td>
+          <td hidden>{{ item.song_img_url }}</td>
+          <td><img src="{{ item.song_img_url }}" alt="{{ item.song_title }} cover art"></td>
+          <td>
+            <form action="{{ url_for('remove_subscription') }}" method="post">
+              <input type="hidden" name="title" value="{{ item.song_title }}">
+              <button type="submit">Remove</button>
+            </form>
+          </td>
+          
+
+        </tr>
+      {% endfor %}
+    </table>
+    <p>
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    </p>
+    <ul>
+      <li><a href = "{{url_for('mainpage') }}"> Main Page</a></li>
+    </ul>
+  </body>
+</html>

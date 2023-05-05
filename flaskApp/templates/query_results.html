@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music Query Results</title>
+  </head>
+  <body>
+    <h1>Music Query Results</h1>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Year</th>
+        <th>Image URL</th>
+        {% for item in results %}
+        <tr>
+          <td>{{ item.title }}</td>
+          <td>{{ item.artist }}</td>
+          <td>{{ item.year }}</td>
+          <td hidden>{{ item.img_url }}</td>
+          <td><img src="{{ item.img_url }}" alt="{{ item.title }} cover art"></td>
+          <td>
+            <form action="{{ url_for('subscribed') }}" method="post">
+              <input type="hidden" name="title" value="{{ item.title }}">
+              <input type="hidden" name="artist" value="{{ item.artist }}">
+              <input type="hidden" name="year" value="{{ item.year }}">
+              <input type="hidden" name="img_url" value="{{ item.img_url }}">
+              <button type="submit">Subscribe</button>
+            </form>
+          </td>
+
+        </tr>
+      {% endfor %}
+    </table>
+    <p>
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    </p>
+    <ul>
+      <li><a href = "{{url_for('query') }}"> Query Page</a></li>
+    </ul>
+  </body>
+</html>

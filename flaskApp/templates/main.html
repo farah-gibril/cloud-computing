@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Page</title>
+</head>
+<body>
+    <h1>Welcome to the Main Page {{username}}</h1>
+    <ul>
+        <li><a href="{{ url_for('login') }}">Logout</a></li>
+        <li><a href="{{ url_for('subscribed_info') }}">Subscriptions</a></li>
+        <li><a href="{{ url_for('query') }}">Query</a></li>
+    </ul>
+</body>
+</html>

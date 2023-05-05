@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music Query</title>
+  </head>
+  <body>
+    <h1>Music Query</h1>
+    <form action="{{ url_for('query_results') }}" method="post">
+      <label for="title">Title:</label>
+      <input type="text" name="title">
+      <br>
+      <label for="artist">Artist:</label>
+      <input type="text" name="artist">
+      <br>
+      <label for="year">Year:</label>
+      <input type="text" name="year">
+      <br>
+      <input type="submit" value="Query">
+    </form>
+    <ul>
+        <li><a href = "{{url_for('mainpage') }}"> Main Page</a></li>
+      </ul>
+  </body>
+</html>
